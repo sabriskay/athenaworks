@@ -3,7 +3,7 @@
     height: 100%;
 }
 
-.element {
+.clipoard {
     border:none;
     background-image:none;
     background-color:transparent;
@@ -11,12 +11,15 @@
     -moz-box-shadow: none;
     box-shadow: none;
     cursor: pointer;
-    width: 20px;
     display: flex;
     justify-content: center;
     align-content: center;
     
     &:hover {
         color: blue;
+    }
+
+    p {
+        margin-right: 5px;
     }
 }

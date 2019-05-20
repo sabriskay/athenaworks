@@ -1,0 +1,21 @@
+.list-item-text-clipboard-wrap {
+    flex: 1;
+}
+
+.list-item-text-clipboard-element {
+    border: none;
+    background-image: none;
+    background-color: transparent;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: flex-start;
+    text-align: initial;
+    align-items: flex-end;
+    
+    &:hover {
+        color: blue;
+    }
+}

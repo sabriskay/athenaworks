@@ -7,27 +7,22 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import Collapse from '@material-ui/core/Collapse';
 import { Capitalize } from '../../Utils/String';
-import Clipboard from '../Clipboard';
+import TextClipboard from '../TextClipboard';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import moment from 'moment';
+import ListItemTextClipboard from '../ListItemTextClipboard';
 
 function User(props) {
   const [open, switchOpen] = React.useState(false);
   const { user } = props;
-  const { email } = user;
-  const { city } = user.location;
-  const { phone } = user;
-  const { username } = user.login;
-  const { date } = moment(user.registered).format('');
-  const { picture: { large } } = user;
+  const { date } = user.registered;
   const name = Capitalize(user.name.first, user.name.last);
-
-  const secondaryStyle = {
-    style: {
-      color: "red"
-    }
-  }
+  const { 
+    email, 
+    phone, 
+    picture: { large }, 
+    location: { city }, 
+    login: { username } 
+  } = user;
 
   return (
     <Card className={'user-card'} onClick={() => switchOpen(!open)}>
@@ -37,27 +32,19 @@ function User(props) {
            {name}
           </Typography>
           <Typography className="with-clipboard" variant="subtitle1" color="textSecondary">
-            {email} <Clipboard value={email}/>
+            <TextClipboard value={email}/>
           </Typography>
         </CardContent>
         <Collapse in={open} timeout="auto" unmountOnExit>
           <CardContent>
-            <ListItem>
-              <ListItemText secondaryTypographyProps={secondaryStyle} primary='User name' secondary={username}/>
-              <ListItemText primary='User since' secondary={date}/>
+            <ListItem style={{ display: 'grid', gridAutoFlow: 'column' }}>
+              <ListItemTextClipboard title={'User Name'} value={username} />
+              <ListItemTextClipboard title={'User Since'} value={date} />
             </ListItem>
-            <ListItem>
-              <ListItemText primary='City' secondary={city}/>
-              <ListItemText primary='Phone' secondary={phone}/>
-            </ListItem>
-
           </CardContent>
         </Collapse>
       </div>
-      
-      
-
-        <CardMedia
+      <CardMedia
         className={'user-cover'}
         image={large}
       />

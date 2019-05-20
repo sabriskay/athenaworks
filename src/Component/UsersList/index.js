@@ -5,6 +5,7 @@ import UserContainer from '../../Container/User';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
 import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
 import SearchUser from '../../Container/SearchUser';
@@ -30,11 +31,15 @@ class UsersList extends React.Component {
 
     return (
       <Table className={'table'}>
-        <TableRow>
-          <TableCell component="th" scope="row" style={{display: 'grid', justifyContent: 'right'}}>
-          <SearchUser/>
-          </TableCell>
-        </TableRow>
+        
+        <TableHead>
+          <TableRow>
+            <TableCell component="th" scope="row" style={{display: 'grid', justifyContent: 'right'}}>
+            <SearchUser/>
+            </TableCell>
+          </TableRow>
+        </TableHead>
+        
         
         <TableBody>
           {rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(user_id => (

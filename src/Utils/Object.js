@@ -53,7 +53,7 @@ export function hasAttributesWithValue (queries) {
         }
 
         let attribute = queries[key].toString();
-        if (value.toLowerCase().indexOf(attribute) !== -1) {
+        if (value.toString().toLowerCase().indexOf(attribute) !== -1) {
             return true;
         }
 

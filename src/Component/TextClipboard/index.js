@@ -4,6 +4,7 @@ import * as React from 'react';
 import Clipboard from 'react-clipboard.js';
 import FileCopy from '@material-ui/icons/FileCopy';
 import Check from '@material-ui/icons/Check';
+import Typography from '@material-ui/core/Typography';
 
 function ClipboardComponent (props) {
     const [ready, setReady] = React.useState(false);
@@ -16,7 +17,8 @@ function ClipboardComponent (props) {
 
     return (
         <div className="wrap">
-            <Clipboard onClick={showCheck} data-clipboard-text={props.value} className={'element'}>
+            <Clipboard onClick={showCheck} data-clipboard-text={props.value} className={'clipoard'}>
+                <Typography>{props.value}</Typography>
                 {ready ? <Check style={{width: '10px'}} /> : <FileCopy style={{width: '10px'}} />}
             </Clipboard>
         </div>
