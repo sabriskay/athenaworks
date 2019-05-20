@@ -31,29 +31,25 @@ class UsersList extends React.Component {
 
     return (
       <Table className={'table'}>
-        
         <TableHead>
           <TableRow>
-            <TableCell component="th" scope="row" style={{display: 'grid', justifyContent: 'right'}}>
-            <SearchUser/>
+            <TableCell component="th" scope="row" className="table-head-cell">
+              <SearchUser/>
             </TableCell>
           </TableRow>
         </TableHead>
-        
-        
         <TableBody>
           {rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(user_id => (
             <TableRow key={user_id} >
-              <TableCell component="th" scope="row" style={{border: 'none'}}>
+              <TableCell component="th" scope="row" className='table-body-cell'>
                 <UserContainer id={user_id} key={user_id}/>
               </TableCell>
             </TableRow> 
           ))}
         </TableBody>
         <TableFooter>
-        <TableRow>
-        
-        <TablePagination
+          <TableRow>
+            <TablePagination
               rowsPerPageOptions={[5, 10, 25]}
               colSpan={3}
               count={rows.length}
@@ -64,14 +60,12 @@ class UsersList extends React.Component {
               }}
               onChangePage={this.handleChangePage}
               onChangeRowsPerPage={this.handleChangeRowsPerPage}
-            />    
-        
-            </TableRow>
+            />
+          </TableRow>
         </TableFooter>
       </Table>
     );
   }
-
 } 
 
 export default UsersList;

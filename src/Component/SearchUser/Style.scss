@@ -3,3 +3,23 @@
     justify-content: space-between;
     align-items: center;
 }
+.container-search-root {
+    padding: 2px 4px;
+    display: flex;
+    align-items: center;
+    width: 400;
+
+    .input {
+        margin-left: 8px;
+        flex: 1,
+    }
+    .iconButton {
+        padding: 10px;
+    }
+    .divider {
+        width: 1px;
+        height: 28px;
+        margin: 4px;
+    }
+}
+
