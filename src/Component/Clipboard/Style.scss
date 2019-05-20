@@ -1,0 +1,22 @@
+.wrap {
+    width: 20px;
+    height: 100%;
+}
+
+.element {
+    border:none;
+    background-image:none;
+    background-color:transparent;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    cursor: pointer;
+    width: 20px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    
+    &:hover {
+        color: blue;
+    }
+}
