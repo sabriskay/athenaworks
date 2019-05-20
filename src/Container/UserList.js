@@ -1,13 +1,10 @@
 import * as React from 'react';
 import UsersListComponent from '../Component/UsersList';
 import { connect } from 'react-redux';
-import { createSelector } from 'reselect';
 import AListUsers  from '../Store/Actions/AListUsers';
 import { getUserListState } from '../selector';
 
 class UsersListContainer extends React.Component {
-
-
     render () {
         const props = this.props;
         

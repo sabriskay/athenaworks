@@ -1,7 +1,6 @@
 import * as React from 'react';
 import UserComponent from '../Component/User';
 import { connect } from 'react-redux';
-import { getUserListState } from '../selector';
 
 function UserContainer (props) {
     return (

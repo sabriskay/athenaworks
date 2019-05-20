@@ -10,11 +10,12 @@ import { Capitalize } from '../../Utils/String';
 import TextClipboard from '../TextClipboard';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemTextClipboard from '../ListItemTextClipboard';
+import ArrowDown from '@material-ui/icons/KeyboardArrowDown';
 
 function User(props) {
   const [open, switchOpen] = React.useState(false);
   const { user } = props;
-  const { date } = user.registered;
+  let { date } = user.registered;
   const name = Capitalize(user.name.first, user.name.last);
   const { 
     email, 
@@ -24,30 +25,41 @@ function User(props) {
     login: { username } 
   } = user;
 
+  date = new Date(date);
+
+  let formatted_date = `${date.getMonth() + 1 + 1}/${date.getDate()}/${date.getFullYear()}`;
+
   return (
-    <Card className={'user-card'} onClick={() => switchOpen(!open)}>
-      <div className={'user-details'}>
-        <CardContent className={'user-content'}>
+    <Card className={'user-card'}>
+      <div className={'user-card-details'}>
+        <CardContent className={'user-card-details-content'}>
           <Typography component="h5" variant="h5">
            {name}
           </Typography>
-          <Typography className="with-clipboard" variant="subtitle1" color="textSecondary">
-            <TextClipboard value={email}/>
+          <Typography className="user-card-with-clipboard" variant="subtitle1" color="textSecondary">
+            <TextClipboard value={email}/> 
           </Typography>
+          <ArrowDown className={`user-card-detail-collapse ${open && 'active'}`} onClick={() => switchOpen(!open)}/>
         </CardContent>
         <Collapse in={open} timeout="auto" unmountOnExit>
           <CardContent>
-            <ListItem style={{ display: 'grid', gridAutoFlow: 'column' }}>
+            <ListItem className='user-card-detail-list-item-content'>
               <ListItemTextClipboard title={'User Name'} value={username} />
-              <ListItemTextClipboard title={'User Since'} value={date} />
+              <ListItemTextClipboard title={'User Since'} value={formatted_date} />
+            </ListItem>
+            <ListItem className='user-card-detail-list-item-content'>
+              <ListItemTextClipboard title={'Contact Phone'} value={phone} />
+              <ListItemTextClipboard title={'Location City'} value={city} />
             </ListItem>
           </CardContent>
         </Collapse>
       </div>
-      <CardMedia
-        className={'user-cover'}
-        image={large}
-      />
+      
+        
+        <CardMedia
+          className={`user-card-cover`}
+          image={large}
+        />
     </Card>
   );
 }

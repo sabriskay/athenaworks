@@ -6,7 +6,7 @@ import FileCopy from '@material-ui/icons/FileCopy';
 import Check from '@material-ui/icons/Check';
 import ListItemText from '@material-ui/core/ListItemText';
 
-function ClipboardComponent (props) {
+function ListItemTextClipboard (props) {
     const [ready, setReady] = React.useState(false);
     const showCheck = function (event) {
         event.preventDefault();
@@ -33,15 +33,15 @@ function ClipboardComponent (props) {
     return (
         <div className={'list-item-text-clipboard-wrap'}>
             <Clipboard onClick={showCheck} data-clipboard-text={props.value} className={'list-item-text-clipboard-element'}>
-            <ListItemText 
-                primaryTypographyProps={primaryStyle}
-                secondaryTypographyProps={secondaryStyle}
-                primary={props.title} 
-                secondary={props.value}/>
-                {ready ? <Check style={{width: '10px'}} /> : <FileCopy style={{width: '10px'}} />}
+              <ListItemText 
+                  primaryTypographyProps={primaryStyle}
+                  secondaryTypographyProps={secondaryStyle}
+                  primary={props.title} 
+                  secondary={props.value}/>
+                  {ready ? <Check style={{width: '10px'}} /> : <FileCopy style={{width: '10px'}} />}
             </Clipboard>
         </div>
     ); 
 } 
     
-export default ClipboardComponent;
+export default ListItemTextClipboard;
